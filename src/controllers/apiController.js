@@ -14,7 +14,7 @@ exports.getProblems = async (req, res) => {
 
     // Constants to define short and long living problems
     const SHORT_LIVED_TIME = (1000 * 60 * 5); // 5min
-    const LONG_LIVED_TIME = (1000 * 60 * 60 * 2); // 24h
+    const LONG_LIVED_TIME = (1000 * 60 * 60 * 24); // 24h
     const DAYS = 365;
     const FROM = `now-${DAYS}d`
 
