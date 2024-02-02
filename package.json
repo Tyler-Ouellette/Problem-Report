@@ -1,0 +1,23 @@
+{
+    "name": "problems",
+    "version": "1.0.0",
+    "description": "Problem Audit",
+    "main": "server.js",
+    "scripts": {
+        "start": "node src/server.js"
+    },
+    "author": "Tyler Ouellette",
+    "license": "ISC",
+    "dependencies": {
+        "@dt-esa/dynatrace-api-client": "^2.2.10",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "https": "^1.0.0",
+        "node-fetch": "^2.6.1"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13",
+        "@types/node": "^17.0.23",
+        "nodemon": "^2.0.15"
+    }
+}
