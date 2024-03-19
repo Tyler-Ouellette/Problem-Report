@@ -1,5 +1,7 @@
 // const apiCalls = require('../apiCalls');
 const { DynatraceTenantAPI } = require('@dt-esa/dynatrace-api-client');
+const axios = require('axios');
+const https = require('https');
 
 exports.getProblems = async (req, res) => {
 
@@ -8,9 +10,18 @@ exports.getProblems = async (req, res) => {
         token: process.env.TOKEN
     }
 
+    const agent = new https.Agent({
+        rejectUnauthorized: false,
+        requestCert: false,
+        agent: false,
+    });
+
     const dtAPI = new DynatraceTenantAPI(creds, {
         skipConnectivityCheck: true,
-    })
+        customAxios: axios.create({
+            httpsAgent: agent
+        })
+    });
 
     // Constants to define short and long living problems
     const SHORT_LIVED_TIME = (1000 * 60 * 5); // 5min
@@ -47,6 +58,9 @@ exports.getProblems = async (req, res) => {
         "Number of Short Lived Problems < 5mins": shortLivedProblems.length,
         "Long Problems > 24 hours": longProblems.length
     }
+
+    console.log(problemStats);
+
     res.status(200).send(problemStats);
 
 }
