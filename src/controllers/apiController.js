@@ -55,8 +55,8 @@ exports.getProblems = async (req, res) => {
         "Number of Affected Entities": numberAffectedEntities,
         "Number of Impacted Entities": numberImpactedEntities,
         "Number Of Management Zones Affected": numManagementZonesAffected,
-        "Number of Short Lived Problems < 5mins": shortLivedProblems.length,
-        "Long Problems > 24 hours": longProblems.length
+        "Number of Short Lived Problems Less than 5mins": shortLivedProblems.length,
+        "Long Problems Greater than 24 hours": longProblems.length
     }
 
     console.log(problemStats);
